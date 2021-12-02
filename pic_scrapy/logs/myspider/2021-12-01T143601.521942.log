@@ -1,0 +1,47 @@
+2021-12-01 14:36:02 [scrapy] DEBUG: Crawled (404) <GET http://quotes.toscrape.com/robots.txt> (referer: None)
+2021-12-01 14:36:09 [scrapy] DEBUG: Crawled (200) <GET http://quotes.toscrape.com/page/1/> (referer: None)
+2021-12-01 14:36:09 [scrapy] ERROR: Spider error processing <GET http://quotes.toscrape.com/page/1/> (referer: None)
+Traceback (most recent call last):
+  File "D:\g2e\document\private\web\new_env\lib\site-packages\twisted\internet\defer.py", line 858, in _runCallbacks
+    current.result = callback(  # type: ignore[misc]
+  File "D:\g2e\document\private\web\new_env\lib\site-packages\scrapy\spiders\__init__.py", line 90, in _parse
+    return self.parse(response, **kwargs)
+  File "D:\g2e\document\private\web\new_env\pick_picture\pic_scrapy\pic_scrapy\spiders\myspider.py", line 9, in parse
+    request = scrapy.Request('http://localhost:5000/first', method = 'post', body=json.dumps(response.body), headers = {'Content-Type':'application/json'})
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2544.0_x64__qbz5n2kfra8p0\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2544.0_x64__qbz5n2kfra8p0\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2544.0_x64__qbz5n2kfra8p0\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.2544.0_x64__qbz5n2kfra8p0\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+2021-12-01 14:36:09 [scrapy] INFO: Closing spider (finished)
+2021-12-01 14:36:09 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 627,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 2578,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 1,
+ 'downloader/response_status_count/404': 1,
+ 'elapsed_time_seconds': 7.610043,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2021, 12, 1, 5, 36, 9, 728343),
+ 'httpcompression/response_bytes': 11053,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 2,
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 7,
+ 'response_received_count': 2,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/404': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2021, 12, 1, 5, 36, 2, 118300)}
+2021-12-01 14:36:09 [scrapy] INFO: Spider closed (finished)
