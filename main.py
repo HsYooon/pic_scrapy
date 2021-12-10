@@ -15,16 +15,32 @@ app = Flask(__name__)
 def home():
     return "home"
 
-@app.route('/test')
-def test():
-    print("----------test()시작--- ")
-    items = fetch()
-    print("----------fetch()완료--- ")
-    return json.dumps(items)
+@app.route('/red')
+def red():
+    print('------red()시작----->')
+    # params = {
+    #     'spider_name' : 'myspider',
+    #     'url' : url
+    # }
+    #response = requests.get('http://localhost:9080/crawl.json', params)
+    response = requests.get('http://localhost:9080/crawl.json?spider_name=myspider&callback=parse&url=https://unsplash.com/s/photos/red')
+    data = json.loads(response.text)
+    data_list = []
+    dict = {}
+    id = 0
+    for item in data["items"]:
+        dict['src'] = item["img"].strip().split(' ')[0]
+        dict['id'] = id
+        dict['sort'] = 'red'
+        data_list.append(dict)
+        dict={}
+        id += 1
+    print(data_list)
+    return json.dumps(data_list)
 
-@app.route('/fetch')
-def fetch():
-    print('------fetch()시작----->')
+@app.route('/yellow')
+def yellow():
+    print('------yellow()시작----->')
     # params = {
     #     'spider_name' : 'myspider',
     #     'url' : url
@@ -40,6 +56,53 @@ def fetch():
         dict['id'] = id
         dict['sort'] = 'yellow'
         data_list.append(dict)
+        dict={}
+        id += 1
+    print(data_list)
+    return json.dumps(data_list)
+
+@app.route('/green')
+def green():
+    print('------green()시작----->')
+    # params = {
+    #     'spider_name' : 'myspider',
+    #     'url' : url
+    # }
+    #response = requests.get('http://localhost:9080/crawl.json', params)
+    response = requests.get('http://localhost:9080/crawl.json?spider_name=myspider&callback=parse&url=https://unsplash.com/s/photos/green')
+    data = json.loads(response.text)
+    data_list = []
+    dict = {}
+    id = 0
+    for item in data["items"]:
+        dict['src'] = item["img"].strip().split(' ')[0]
+        dict['id'] = id
+        dict['sort'] = 'green'
+        data_list.append(dict)
+        dict={}
+        id += 1
+    print(data_list)
+    return json.dumps(data_list)
+
+@app.route('/purple')
+def purple():
+    print('------purple()시작----->')
+    # params = {
+    #     'spider_name' : 'myspider',
+    #     'url' : url
+    # }
+    #response = requests.get('http://localhost:9080/crawl.json', params)
+    response = requests.get('http://localhost:9080/crawl.json?spider_name=myspider&callback=parse&url=https://unsplash.com/s/photos/purple')
+    data = json.loads(response.text)
+    data_list = []
+    dict = {}
+    id = 0
+    for item in data["items"]:
+        dict['src'] = item["img"].strip().split(' ')[0]
+        dict['id'] = id
+        dict['sort'] = 'purple'
+        data_list.append(dict)
+        dict={}
         id += 1
     print(data_list)
     return json.dumps(data_list)
